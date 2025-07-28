@@ -1,6 +1,6 @@
 # Instagram 自動發文工具
 
-一個功能完整的 Instagram 自動化發文工具，可以從 Google Sheets 讀取內容，自動生成圖片並發布到 Instagram。
+一個功能完整的 Instagram 自動化發文工具，用戶先在 Google Forms 投稿，經過人手審核後，將通過的內容放入 Google Sheets。本工具會從 Google Sheets 讀取經審核的內容，自動生成圖片並發布到 Instagram。
 
 ```bash
 git clone https://github.com/Onuty/instagram-automation-tool.git
@@ -8,12 +8,12 @@ cd instagram-automation-tool
 
 ## 主要功能
 
-- 📊 **Google Sheets 整合**：從試算表批量讀取待發布內容
-- 🖼️ **智能圖片生成**：將文字渲染成 1170×1170 白底圖片，支援中文和 Emoji
-- 🔐 **自動登入管理**：Instagram 登入憑證快取、自動重試、兩步驗證支援
-- 📱 **自動發布**：批量上傳圖片/影片，附帶統一格式的說明文字和免責聲明
-- 🔄 **斷點續傳**：維護發布計數，支援中斷後繼續發布
-- ⚙️ **配置管理**：自動保存和更新配置文件
+- 📊 Google Sheets 整合：從試算表批量讀取待發布內容
+- 🖼️ 智能圖片生成：將文字渲染成 1170×1170 白底圖片，支援中文和 Emoji
+- 🔐 自動登入管理：Instagram 登入憑證快取、自動重試、兩步驗證支援
+- 📱 自動發布：批量上傳圖片/影片，附帶統一格式的說明文字和免責聲明
+- 🔄 斷點續傳：維護發布計數，支援中斷後繼續發布
+- ⚙️ 配置管理：自動保存和更新配置文件
 
 ## 安裝步驟
 
@@ -21,7 +21,6 @@ cd instagram-automation-tool
 
 ```bash
 pip install -r requirements.txt
-```
 
 ### 2. 準備必要文件
 
@@ -103,27 +102,27 @@ python main.py
 ```
 instagram-automation-tool/
 ├── main.py              # 主程式
-├── config.yml           # 配置文件
+├── config.yml           # 配置文件 （手動配置）
 ├── requirements.txt     # 依賴套件清單
 ├── README.md           # 說明文件
 ├── font/               # 字體文件目錄
 │   └── msjh.ttc       # 中文字體
-├── outputs/            # 生成圖片輸出目錄
+├── outputs/            # 生成圖片輸出目錄 （自動生成）
 └── ig_credentials.json # Instagram 登入憑證（自動生成）
-```
+└── your_google_api.json # Google Sheet API 登入憑證（手動加入）
 
 ## 配置說明
 
 ### 主要設定項目
 
-| 設定項目 | 說明 | 範例值 |
-|---------|------|--------|
-| `USERNAME` | Instagram 用戶名 | `"your_username"` |
-| `PASSWORD` | Instagram 密碼 | `"your_password"` |
-| `Google_API_Keys` | Google API 金鑰文件路徑 | `"./service-account.json"` |
-| `WORKSHEET_URL` | Google Sheets 網址 | `"https://docs.google.com/..."` |
-| `POST_COUNTER` | 當前貼文編號 | `1` |
-| `TAG` | 貼文標籤前綴 | `"#Test"` |
+| 設定項目         | 說明                   | 範例值                             |
+|------------------|------------------------|------------------------------------|
+| `USERNAME`       | Instagram 用戶名      | `"your_username"`                  |
+| `PASSWORD`       | Instagram 密碼        | `"your_password"`                  |
+| `Google_API_Keys`| Google API 金鑰文件路徑| `"./service-account.json"`         |
+| `WORKSHEET_URL`  | Google Sheets 網址    | `"https://docs.google.com/..."`    |
+| `POST_COUNTER`   | 當前貼文編號          | `1`                                |
+| `TAG`            | 貼文標籤前綴          | `"#Test"`                          |
 
 ### 進階設定
 
