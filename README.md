@@ -119,9 +119,10 @@ instagram-automation-tool/
 ├── outputs/            # 生成圖片輸出目錄 （自動生成）
 └── ig_credentials.json # Instagram 登入憑證（自動生成）
 └── your_google_api.json # Google Sheet API 登入憑證（手動加入）
+```
 
 ## 配置說明
-```
+
 ### 主要設定項目
 
 | 設定項目         | 說明                   | 範例值                             |
