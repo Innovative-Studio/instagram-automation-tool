@@ -55,7 +55,6 @@ def split_text(s: str, limit: int) -> list[str]:
     Note:
         - 中文字符計算為 2 個字符寬度
         - 英文字符計算為 1 個字符寬度
-        - 遇到換行符會強制換行
     """
     result = []  # 儲存拆分後的行
     current_line = ''  # 當前正在建構的行
@@ -64,13 +63,6 @@ def split_text(s: str, limit: int) -> list[str]:
     for char in s:
         # 計算字符寬度（中文字符較寬）
         size = int((len(char.encode('utf-8')) - 1) / 2 + 1)
-        
-        # 遇到換行符，強制換行
-        if char == '\n':
-            result.append(current_line)
-            current_line = ''
-            current_length = 0
-            continue
 
         # 如果加入此字符會超過限制，先換行
         if current_length + size > limit:
@@ -203,10 +195,6 @@ class InstagramPost:
             except (LoginRequired, BadPassword) as e:
                 print(f"登入錯誤: {type(e).__name__}")
                 attempts += 1
-                
-                # IP黑名單特殊處理
-                if "blacklist" in str(e).lower() or "blocked" in str(e).lower():
-                    print("⛔ IP位址可能被列入黑名單")
                     
                 self.delay_retry(attempts)
                 
@@ -217,13 +205,8 @@ class InstagramPost:
                 self.delay_retry(attempts)
                 # TODO: 
                 
-            except (ClientError, GenericRequestError) as e:
-                print(f"網路錯誤: {type(e).__name__}")
-                attempts += 1
-                self.delay_retry(attempts)
-                
             except Exception as e:
-                print(f"未知錯誤: {type(e).__name__}")
+                print(f"錯誤: {type(e).__name__}")
                 attempts += 1
                 self.delay_retry(attempts)
         
@@ -233,11 +216,6 @@ class InstagramPost:
     def handle_challenge(self, username, choice):
         """處理Instagram兩步驗證"""
         print("🔐 需要完成兩步驗證...")
-        
-        # 手機驗證流程
-        #self.client.dump_settings(self.credential_path)
-        #print("✅ 兩步驗證完成")
-
         
         if choice == ChallengeChoice.SMS:
             return input("請從短信接收驗證碼並在此輸入: ").strip()
@@ -260,27 +238,14 @@ class InstagramPost:
         if not os.path.exists(media_path):
             return False, f"檔案不存在: {media_path}"
         
-        is_video = media_path.lower().endswith(('.mp4', '.mov', '.avi'))
-        
         while attempts < self.retry_limit:
             try:
-                # 添加隨機延遲
-                time.sleep(random.uniform(0.5, 2.5))
-                
-                if is_video:
-                    print(f"⬆️ 上傳影片: {media_path}")
-                    media_id = self.client.video_upload(media_path, caption=caption)
                 else:
                     print(f"⬆️ 上傳圖片: {media_path}")
                     media_id = self.client.photo_upload(media_path, caption=caption)
                 
                 print(f"✅ 媒體上傳成功!")
                 return True, media_id
-                
-            except (ClientError, GenericRequestError) as e:
-                print(f"上傳錯誤: {e}")
-                attempts += 1
-                self.delay_retry(attempts)
                 
             except Exception as e:
                 print(f"上傳異常: {e}")
@@ -337,12 +302,7 @@ def main():
             
             # 免責聲明
             # 免責聲明模板（{USERNAME} 會自動替換為實際用戶名）
-            "DISCLAIMER": """📌 免責聲明：
-1. 本貼內容為用戶投稿，僅代表原作者觀點，非本頁面立場。
-2. 本頁面對投稿內容之真實性、準確性、合法性不做擔保。
-3. 涉及權益爭議或需下架內容，請當事人立即透過私信直接聯絡我們處理。
-4. 使用或據此行動之風險請自行承擔。
-5. 管理團隊保留依規處理貼文權利。
+            "DISCLAIMER": """
 
 投稿 & 追蹤更多 ➡️ @{USERNAME}""",
 
