@@ -17,7 +17,7 @@ cd instagram-automation-tool
 ## 主要功能
 
 - 📊 Google Sheets 整合：從試算表批量讀取待發布內容
-- 🖼️ 智能圖片生成：將文字渲染成 1170×1170 白底圖片，支援中文和 Emoji
+- 🖼️ 智能圖片生成：將文字渲染成 1170×1170 米白色底圖片，支援中文和 Emoji
 - 🔐 自動登入管理：Instagram 登入憑證快取、自動重試、兩步驗證支援
 - 📱 自動發布：批量上傳圖片/影片，附帶統一格式的說明文字和免責聲明
 - 🔄 斷點續傳：維護發布計數，支援中斷後繼續發布
@@ -200,7 +200,7 @@ cd instagram-automation-tool
 ##  Key Features
 
 - 📊 Google Sheets Integration: Batch read content from spreadsheets
-- 🖼️ Smart Image Generation: Render text into 1170×1170 white background images with Chinese and Emoji support
+- 🖼️ Smart Image Generation: Render text into 1170×1170 beige background images with Chinese and Emoji support
 - 🔐 Auto Login Management: Instagram credential caching, auto-retry, 2FA support
 - 📱 Auto Publishing: Batch upload images/videos with formatted captions and disclaimers
 - 🔄 Resume Capability: Maintain post count, support resuming after interruption
