@@ -1,8 +1,9 @@
-<p align="right">
-  <a href="#zh">🇨🇳 中文</a> │ <a href="#en">🇬🇧 English</a>
-</p>
-# Instagram 自動發文工具
+# Instagram Automation Tool / Instagram 自動發文工具
 
+<details>
+<summary>Zh-TW</summary>
+
+<div class="lang-zh">
 一個功能完整的 Instagram 自動化發文工具，用戶先在 Google Forms 投稿，經過人手審核後，將通過的內容放入 Google Sheets。本工具會從 Google Sheets 讀取經審核的內容，自動生成圖片並發布到 Instagram。
 
 ```bash
@@ -115,7 +116,7 @@ instagram-automation-tool/
 └── your_google_api.json # Google Sheet API 登入憑證（手動加入）
 
 ## 配置說明
-
+```
 ### 主要設定項目
 
 | 設定項目         | 說明                   | 範例值                             |
@@ -174,47 +175,55 @@ instagram-automation-tool/
 
 本工具僅供學習和個人使用，使用者需自行承擔使用風險並遵守相關平台的服務條款。
 
-<a name="en"></a>
-# Instagram Auto Poster
+</div>
+</details>
 
-Users submit content via Google Forms, then after manual review the approved entries are added to Google Sheets. This tool reads the reviewed content from Google Sheets, generates images, and posts them to Instagram automatically.
+<details>
+<summary>UK English</summary>
+<div class="lang-en" style="display: none;">
+
+##  About
+
+A comprehensive Instagram automation tool that reads content from Google Sheets, automatically generates images, and posts them to Instagram.
 
 ```bash
 git clone https://github.com/Onuty/instagram-automation-tool.git
 cd instagram-automation-tool
+```
 
-## Features
+##  Key Features
 
-- 📊 Sheets Integration: Read batch-approved posts from Google Sheets
-- 🖼️ Image Generation: Render text onto 1170×1170 white-background images, with Chinese & emoji support
-- 🔐 Login Management: Credential caching, retry logic, and 2FA support
-- 📱 Auto Posting: Bulk upload with standardized captions & disclaimers
-- 🔄 Resume Support: Maintain post counter; resume after interruption
-- ⚙️ Config Management: Auto-save and update configuration
+- 📊 Google Sheets Integration: Batch read content from spreadsheets
+- 🖼️ Smart Image Generation: Render text into 1170×1170 white background images with Chinese and Emoji support
+- 🔐 Auto Login Management: Instagram credential caching, auto-retry, 2FA support
+- 📱 Auto Publishing: Batch upload images/videos with formatted captions and disclaimers
+- 🔄 Resume Capability: Maintain post count, support resuming after interruption
+- ⚙️ Configuration Management: Auto-save and update configuration files
 
-## Installation
+##  Installation
 
 ### 1. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
+```
 
-### 2. 準備必要文件
+### 2. Prepare Required Files
 
 #### Google API Setup
 1. Go to [Google Cloud Console](https://console.cloud.google.com/)
-2. Create or select a project
-3. Enable the Google Sheets API
-4. Create a service account & download JSON key
-5. Place the JSON file (e.g. your_google_api.json) in project root
+2. Create a new project or select an existing one
+3. Enable Google Sheets API
+4. Create a service account and download the JSON key file
+5. Place the key file in the project directory
 
-#### Font File
-- Download a Chinese font (e.g. msjh.ttc)
-- Put it under ./font/
+#### Font Files
+- Download a Chinese-compatible font file (e.g., Microsoft JhengHei `msjh.ttc`)
+- Place the font file in the `./font/` directory
 
 ### 3. Configuration
 
-Edit config.yml:
+Edit the `config.yml` file with the following information:
 
 ```yaml
 USERNAME: "your_instagram_username"
@@ -223,146 +232,126 @@ Google_API_Keys: "./path/to/your/google-service-account.json"
 WORKSHEET_URL: "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/edit"
 ```
 
-## Usage
-
 ### 1. Prepare Google Sheets
 
-#### Standard Google Sheets Format
+#### Google Sheets Standard Format
 
-**Basic Requirements：**
-- Create a spreadsheet using Google Sheets.
-- Ensure the service account has read access to the spreadsheet.
-- Place content in the designated column (default is column A, adjustable in config.yml under ID).
+**Basic Requirements:**
+- Create a spreadsheet using Google Sheets
+- Ensure the service account has read access to the spreadsheet
+- Place content in the specified column (default: Column A, adjustable in `config.yml` under `ID` setting)
 
-**Example Spreadsheet Layout:**
+**Spreadsheet Format Example:**
 
-|Column A (Post Content) | Column B (Notes/Others) |
-|------------------|-------------------|
-| The weather is so nice today! Sunny and bright—perfect for going out. Don’t forget to bring good vibes! | Weather post |
-| Here’s a tip: drink a glass of warm water after waking up to boost metabolism. Healthy living starts with small habits! | Health post |
-| Weekend plans: watch a movie, browse a bookstore, enjoy delicious food. Life is meant to be savored at your own pace~ | Lifestyle post |
-| Three steps to learning a new skill: 1. Set a goal 2. Practice consistently 3. Reflect and improve. You’ve got this! | Learning post |
+| Column A (Post Content)                                                                                                            | Column B (Notes/Other) |
+|-------------------------------------------------------------------------------------------------------------------------------------|------------------------|
+| Beautiful weather today! Sunny and perfect for a walk. Remember to bring a good mood~                                               | Weather post           |
+| Sharing a tip: Drinking warm water in the morning helps metabolism. Healthy living starts with small things!                         | Health post            |
+| Weekend plans: watch movies, visit bookstores, taste delicious food. Life should be enjoyed slowly~                                  | Lifestyle post         |
+| Three steps to learn new skills: 1. Set goals  2. Practice consistently  3. Reflect and improve. Keep going!                           | Learning post          |
 
-## Important Notes
 
-### Content Column
-- **Default** reads column A (`ID: 1`).  
-- To change, edit `ID` in `config.yml`:  
-  - `ID: 1` = column A  
-  - `ID: 2` = column B  
-  - And so on.
+**Important Notes:**
 
-### Text Length
-- Keep each post between **200–500 characters**.  
-- The script will handle line breaks automatically.
+1. **Content Column**: Default reads Column A (1st column), modifiable in `config.yml` under `ID` setting
+   - `ID: 1` = Column A
+   - `ID: 2` = Column B
+   - And so on
 
-### Sheet Name
-- **Default** is “Sheet1”.  
-- Change `SHEET_NAME` in `config.yml` as needed.
+2. **Text Length**: Recommended 200-500 characters per post, the program automatically handles text wrapping
 
-### Permissions
-- Share the spreadsheet with the Google service account’s email.  
-- At minimum, grant **Viewer** access.
+3. **Sheet Name**: Default is "Sheet1", modifiable in `config.yml` under `SHEET_NAME` setting
 
-### Content Format
-- Supports Chinese, English, numbers, symbols.  
-- Emoji are allowed.  
-- The script will auto‑add tags and a disclaimer.
+4. **Permission Settings**:
+   - Add the Google service account email to the spreadsheet's sharing permissions
+   - At least "Viewer" permission required
 
----
+5. **Content Format**:
+   - Supports Chinese, English, numbers, symbols
+   - Supports emoji
+   - Program automatically adds tags and disclaimers
 
-## 2. Run the Script
+### 2. Run the Program
 
 ```bash
 python main.py
+```
 
-3. First-Time Run
-- You will be prompted to enter required configuration details.
+### 3. First Run
+- Program will prompt for necessary configuration information
+- Instagram may require two-factor authentication
+- Configuration will be automatically saved to `config.yml` after completion
 
-- Instagram may require two-factor authentication.
+##  Directory Structure
 
-- Once complete, settings save automatically to config.yml.
-
-Directory Structure
-
+```
 instagram-automation-tool/
-├── main.py                # Main script
-├── config.yml             # Configuration file (manual)
-├── requirements.txt       # Dependency list
-├── README.md              # Documentation
-├── font/                  # Font files
-│   └── msjh.ttc           # Chinese font
-├── outputs/               # Generated images output (auto-created)
-└── ig_credentials.json    # Instagram login credentials (auto-generated)
-└── your_google_api.json   # Google Sheets API credentials (manual)
+├── main.py              # Main program
+├── config.yml           # Configuration file
+├── requirements.txt     # Dependencies list
+├── README.md           # Documentation
+├── font/               # Font files directory
+│   └── msjh.ttc       # Chinese font
+├── outputs/            # Generated images output directory
+└── ig_credentials.json # Instagram login credentials (auto-generated)
+```
 
-Configuration Details
-Main Settings
+## ⚙️ Configuration
+
+### Main Settings
+
 | Setting           | Description                 | Example Value                   |
-| ----------------- | --------------------------- | ------------------------------- |
+|-------------------|-----------------------------|---------------------------------|
 | `USERNAME`        | Instagram username          | `"your_username"`               |
 | `PASSWORD`        | Instagram password          | `"your_password"`               |
-| `Google_API_Keys` | Path to Google API key file | `"./service-account.json"`      |
+| `Google_API_Keys` | Google API key file path    | `"./service-account.json"`      |
 | `WORKSHEET_URL`   | Google Sheets URL           | `"https://docs.google.com/..."` |
 | `POST_COUNTER`    | Current post number         | `1`                             |
-| `TAG`             | Prefix for post tags        | `"#Test"`                       |
+| `TAG`             | Post tag prefix             | `"#Test"`                       |
 
 
-Advanced Settings
-- RETRY_LIMIT: Number of retry attempts on failure (default: 3)
+### Advanced Settings
 
-- RETRY_DELAY: Delay between retries in seconds (default: 10)
+- `RETRY_LIMIT`: Number of retry attempts on failure (default: 3)
+- `RETRY_DELAY`: Retry interval in seconds (default: 10)
+- `FONT_PATH`: Font file path
+- `CONTENT_DIR`: Image output directory
 
-- FONT_PATH: Path to font file
+## ⚠ Important Notes
 
-- CONTENT_DIR: Directory for output images
+1. **Account Security**: Keep your Instagram credentials safe, recommend using a dedicated account
+2. **Posting Frequency**: Avoid posting too frequently to prevent Instagram restrictions
+3. **Content Compliance**: Ensure all content complies with Instagram community guidelines
+4. **API Limits**: Be aware of Google Sheets API rate limits
 
- Important Reminders
+##  Troubleshooting
 
-- Account Security: Keep your Instagram credentials safe; use a dedicated account if possible.
+**Q: Instagram login failed**
+- Check username and password
+- Verify if two-factor authentication is needed
+- Try deleting `ig_credentials.json` and login again
 
-- Posting Frequency: Avoid posting too often to prevent Instagram from imposing limits.
+**Q: Google Sheets read failed**
+- Verify API key file path is correct
+- Check service account permissions
+- Confirm spreadsheet URL is accessible
 
-- Content Review: Ensure all posts comply with Instagram’s Community Guidelines.
+**Q: Image generation failed**
+- Check if font file exists in `./font/` directory
+- Verify font file format is supported
+- Ensure sufficient disk space
 
-- Backup Configurations: Regularly back up config.yml and credential files.
+## Version Info
 
-Troubleshooting
-Common Issues
-Q: Cannot log into Instagram
+- **Version**: 2.0
+- **Author**: Kingsley1116
+- **Updated**: 2025/06/20
+- **Optimizer**: Onuty
+- **Open Source**: 2025/07/28
 
-Check that username and password are correct.
+## License
 
-Verify if two-factor authentication is enabled.
+This tool is for learning and personal use only; users assume all risks and must comply with platform terms.
 
-Try deleting ig_credentials.json and logging in again.
-
-Q: Google Sheets read failure
-
-Confirm the API key file path is correct.
-
-Ensure the service account has permission to the spreadsheet.
-
-Validate the spreadsheet URL format.
-
-Q: Image generation failure
-
-Check that the font file exists.
-
-Verify write permissions for the outputs directory.
-
-Confirm content format meets requirements.
-
-Version Information
-Version: 2.0
-
-Author: Kingsley1116
-
-Last Updated: June 20, 2025
-
-Optimized by: Onuty
-
-Open-Sourced On: July 28, 2025
-
-License
-This tool is provided for learning and personal use only. Users assume all risks and must comply with the terms of service of relevant platforms.
+</div>
+</details>
