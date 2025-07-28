@@ -1,0 +1,23 @@
+# Instagram 自動發文工具依賴套件
+# ================================
+
+# 核心依賴
+PyYAML>=6.0                    # YAML 配置文件解析
+python-dotenv>=1.0.0           # 環境變數管理
+Pillow>=10.0.0                 # 圖像處理
+pilmoji>=2.0.0                 # Emoji 支援
+instagrapi>=1.19.0             # Instagram API 客戶端
+
+# Google Sheets API
+gspread>=5.10.0                # Google Sheets 操作
+google-auth>=2.22.0            # Google 認證
+google-auth-oauthlib>=1.0.0    # OAuth 流程
+google-auth-httplib2>=0.1.0    # HTTP 傳輸
+
+# 可選依賴（建議安裝）
+requests>=2.31.0               # HTTP 請求
+urllib3>=2.0.0                 # URL 處理
+
+# 開發依賴（可選）
+# pytest>=7.0.0               # 測試框架
+# black>=23.0.0                # 代碼格式化

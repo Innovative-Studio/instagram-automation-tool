@@ -1,0 +1,30 @@
+CONTENT_DIR: ./outputs
+CREDENTIAL_PATH: ./ig_credentials.json
+DISCLAIMER: '📌 免責聲明：
+
+  1. 本貼內容為用戶投稿，僅代表原作者觀點，非本頁面立場。
+
+  2. 本頁面對投稿內容之真實性、準確性、合法性不做擔保。
+
+  3. 涉及權益爭議或需下架內容，請當事人立即透過私信直接聯絡我們處理。
+
+  4. 使用或據此行動之風險請自行承擔。
+
+  5. 管理團隊保留依規處理貼文權利。
+
+
+  投稿 & 追蹤更多 ➡️ @{USERNAME}
+
+  '
+FONT_PATH: ./font/msjh.ttc
+Google_API_Keys: ./sound-electron-467312-g6-1aca52263aa9.json
+ID: 1
+PASSWORD: alexchan2816862568828
+POST_COUNTER: 6
+RETRY_DELAY: 10
+RETRY_LIMIT: 3
+SHEET_NAME: Post1
+TAG: '#Test'
+USERNAME: test41235
+WORKSHEET_URL: https://docs.google.com/spreadsheets/d/1rt6uxukV6mRu0h31K6TcLUJFW-c_Vn_ItU2Oz680tQY/edit?usp=sharing
+tag_post_number: ''
