@@ -98,20 +98,20 @@ def add_multiline_text_to_image(text_lines: list[str], font_size: int, font_path
         
     Note:
         - 圖片尺寸固定為 1170×1170 像素（Instagram 正方形格式）
-        - 背景為白色，文字為黑色
+        - 背景為米白色，文字為灰色
         - 文字垂直居中排列
         - 支援 Emoji 渲染
     """
     # 設定圖片尺寸和背景色（Instagram 正方形格式）
     width, height = 1170, 1170
-    background_color = (255, 255, 255)  # 白色背景
+    background_color = (250, 250, 250)  # 米白色背景
     image = Image.new("RGB", (width, height), background_color)
 
     try:
         # 初始化支援 Emoji 的繪圖物件
         draw = Pilmoji(image)
         font = ImageFont.truetype(font_path, font_size)
-        text_color = (0, 0, 0)  # 黑色文字
+        text_color = (51, 51, 51)  # 灰色文字
 
         # 計算文字總高度並垂直居中
         total_height = len(text_lines) * font_size
@@ -142,7 +142,7 @@ class InstagramPost:
     Instagram 貼文發布工具
     
     功能：
-    - 圖片 / 影片上傳
+    - 圖片上傳
     - 貼文發布
     - 自動重試機制
     - 詳細錯誤處理
@@ -240,11 +240,10 @@ class InstagramPost:
         
         while attempts < self.retry_limit:
             try:
-                else:
-                    print(f"⬆️ 上傳圖片: {media_path}")
-                    media_id = self.client.photo_upload(media_path, caption=caption)
+                print(f"⬆️ 上傳圖片: {media_path}")
+                media_id = self.client.photo_upload(media_path, caption=caption)
                 
-                print(f"✅ 媒體上傳成功!")
+                print(f"✅ 圖片上傳成功!")
                 return True, media_id
                 
             except Exception as e:
@@ -252,7 +251,7 @@ class InstagramPost:
                 attempts += 1
                 self.delay_retry(attempts)
         
-        return False, "媒體上傳失敗，超過重試次數"
+        return False, "圖片上傳失敗，超過重試次數"
 
 
 # ==================== 主程序 ====================
@@ -301,10 +300,9 @@ def main():
             "tag_post_number": "",
             
             # 免責聲明
-            # 免責聲明模板（{USERNAME} 會自動替換為實際用戶名）
             "DISCLAIMER": """
 
-投稿 & 追蹤更多 ➡️ @{USERNAME}""",
+投稿@{USERNAME}""",
 
             # Worksheet 設定
             "ID": 1,
