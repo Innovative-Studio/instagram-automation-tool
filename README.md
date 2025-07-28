@@ -4,11 +4,15 @@
 <summary>Zh-TW</summary>
 
 <div class="lang-zh">
+   
+## 簡介
+
 一個功能完整的 Instagram 自動化發文工具，用戶先在 Google Forms 投稿，經過人手審核後，將通過的內容放入 Google Sheets。本工具會從 Google Sheets 讀取經審核的內容，自動生成圖片並發布到 Instagram。
 
 ```bash
 git clone https://github.com/Onuty/instagram-automation-tool.git
 cd instagram-automation-tool
+```
 
 ## 主要功能
 
@@ -25,6 +29,7 @@ cd instagram-automation-tool
 
 ```bash
 pip install -r requirements.txt
+```
 
 ### 2. 準備必要文件
 
@@ -231,7 +236,7 @@ PASSWORD: "your_instagram_password"
 Google_API_Keys: "./path/to/your/google-service-account.json"
 WORKSHEET_URL: "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/edit"
 ```
-
+## Usage
 ### 1. Prepare Google Sheets
 
 #### Google Sheets Standard Format
