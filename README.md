@@ -1,7 +1,7 @@
 # Instagram Automation Tool / Instagram 自動發文工具
 
 <details>
-<summary>Zh-TW</summary>
+<summary>zh-MO</summary>
 
 <div class="lang-zh">
    
